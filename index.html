@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="assets/images/shapes.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <script src="https://kit.fontawesome.com/553104d029.js" crossorigin="anonymous"></script>
+  <title>Adivinhe o Número</title>
+</head>
+<body>
+  <main>
+    <section class="section" id="content">
+      <!--=== Parallax Background ===-->
+      <div class="content__background">
+        <img class="layer" src="assets/images/geometric-shape-1.png" data-speed="-5">
+        <img class="layer" src="assets/images/geometric-shape-2.png" data-speed="5">
+        <img class="layer" src="assets/images/geometric-shape-3.png" data-speed="2">
+        <img class="layer" src="assets/images/geometric-shape-4.png" data-speed="6">
+        <img class="layer" src="assets/images/geometric-shape-5.png" data-speed="8">
+        <img class="layer" src="assets/images/geometric-shape-6.png" data-speed="-2">
+        <img class="layer" src="assets/images/geometric-shape-7.png" data-speed="4">
+        <img class="layer" src="assets/images/geometric-shape-8.png" data-speed="-9">
+        <img class="layer" src="assets/images/geometric-shape-9.png" data-speed="6">
+        <img class="layer" src="assets/images/geometric-shape-10.png" data-speed="-7">
+        <img class="layer" src="assets/images/geometric-shape-11.png" data-speed="-5">
+        <img class="layer" src="assets/images/geometric-shape-12.png" data-speed="5">
+      </div>
+
+      <!--=== Custom Alerts ===-->
+      <div class="content__alert hide" id="blue-alert">
+        <i class="fas fa-check-circle alert-icon"></i>
+        <span class="content__alert--message" id="blue-alert-message"></span>
+
+        <div class="content__close-button" id="close-button--blue">
+          <i class="fas fa-times close-icon--alert"></i>
+        </div>
+      </div>
+
+      <div class="content__alert hide" id="red-alert">
+        <i class="fas fa-times-circle alert-icon"></i>
+        <span class="content__alert--message" id="red-alert-message"></span>
+
+        <div class="content__close-button" id="close-button--red">
+          <i class="fas fa-times close-icon--alert"></i>
+        </div>
+      </div>
+
+      <!--=== Card ===-->
+      <div class="content__card layer" data-speed="2" id="card">
+        <div class="content__card--header">
+          <div class="card__image--alura-logo">
+            <a href="https://alura.com.br/" target="_blank"><img src="assets/images/alura-logo.svg" alt="Alura Logo"></a>
+          </div>
+
+          <div class="card__image--imersao">
+            <img src="assets/images/imersao-dev-logo.svg" alt="Imersão Dev">
+          </div>
+
+          <div class="card__text">
+            <h1 class="title--h1">Mentalista</h1>
+          </div>
+
+          <div class="content__attempts">
+            <div class="circle">
+              <input class="attempts-number" type="number" value="3">
+            </div>
+          </div>
+        </div>
+
+        <div class="content__card--body">
+          <form class="card__form" action="#">
+            <div class="card__form--box">
+              <input class="card__input" type="number" min="0" max="10" id="input" autocomplete="off">
+              <div class="card__button--submit">
+                <button type="button" class="button" id="submit-button" onclick="guessing()"><i class="uil uil-message arrow-icon"></i></button>
+              </div>
+            </div>
+          </form>
+
+          <div class="card__button--rules">
+            <button class="rules__button" type="button" onclick="toggle()">Como Jogar</button>
+          </div>
+        </div>
+
+        <!--=== Popups ===-->
+        <div class="content__congratulations" id="popup">
+          <a class="close-icon" id="close-icon--congratulations"></a>
+          <h2 class="title--h2">Parabéns você descobriu o número secreto 🎉🎉🎉</h2>
+        </div>
+
+        <div class="content__failed" id="popup">
+          <a class="close-icon" id="close-icon--failed"></a>
+          <h2 class="title--h2" id="secret-number"></h2>
+        </div>
+
+        <div class="content__rules" id="rules-popup">
+          <a class="close-icon" id="close-icon--rules" onclick="toggle()"></a>
+          <h3 class="title--h3">Adivinhe o número secreto !</h3>
+
+          <div class="rules__text">
+            <p class="paragraph">
+              <i class="far fa-arrow-alt-circle-right rules--icon"></i> Você terá 3 tentativas para adivinhar qual o número secreto de 0 a 10.
+            </p>
+
+            <p class="paragraph">
+              <i class="far fa-arrow-alt-circle-right rules--icon"></i> Quando o número que jogar não for igual ao número secreto, você perderá uma tentativa.
+            </p>
+
+            <p class="paragraph">
+              <i class="far fa-arrow-alt-circle-right rules--icon"></i> Dicas vão aparecer na tela indicando se o número secreto é maior ou menor do que o número jogado.
+            </p>
+
+            <h4 class="title--h4">Boa sorte !</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/confetti.js"></script>
+</body>
+</html>

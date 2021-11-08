@@ -1,0 +1,507 @@
+/*==== GLOBALS ===================*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: var(--regular-font) var(--normal-font-size) var(--open-sans);
+}
+
+/*==== RESET ====================*/
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+  display: block;
+}
+
+/*==== VARIABLES ====================*/
+:root {
+  /*======== Colors ========*/
+  --section-background-color: hsl(0, 0%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --black: hsl(0, 0%, 10%);
+
+  /*======== Custom Alerts Colors ========*/
+  /* Blue */
+  --blue-border-left-color: hsl(204, 96%, 72%);
+  --blue-background-color: hsl(202, 95%, 92%);
+  --blue-base-color: hsl(202, 100%, 62%);
+  --blue-close-button-color: hsl(202, 100%, 80%);
+  --blue-close-button-color-hover: hsl(202, 100%, 75%);
+
+  /* Red */
+  --red-border-left-color: hsl(354, 98%, 64%);
+  --red-background-color: hsl(358, 100%, 94%);
+  --red-base-color: hsl(353, 100%, 63%);
+  --red-close-button-color: hsl(353, 100%, 80%);
+  --red-close-button-color-hover: hsl(353, 100%, 75%);
+
+  /*======= Font and typography =======*/
+  --open-sans: "Open Sans", sans-serif;
+  --poppins: "Poppins", sans-serif;
+
+  /*======== Font size ========*/
+  --title-h1-font-size: 1.4rem;
+  --title-h2-font-size: 1.25rem;
+  --title-h2-font-size-alt: 1.2rem;
+  --title-h3-font-size: 1.15rem;
+  --normal-font-size: 1rem;
+  --paragraph-font-size: 0.875rem;
+  --rules-button-font-size: 0.75rem;
+
+  /*======== Font weight ========*/
+  --regular-font: 400;
+  --medium-font: 500;
+  --bold-font: 700;
+}
+
+/*==== ANIMATIONS ==========================*/
+@keyframes showAlert {
+  0% {
+    transform: translateX(100%);
+  }
+
+  40% {
+    transform: translateX(-10%);
+  }
+
+  80% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-0.625rem);
+  }
+}
+
+@keyframes hideAlert {
+  0% {
+    transform: translateX(-0.625rem);
+  }
+
+  40% {
+    transform: translateX(0%);
+  }
+
+  80% {
+    transform: translateX(-10%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/*==== REUSABLE CLASSES ====================*/
+.title--h2 {
+  font: var(--bold-font) var(--title-h2-font-size) var(--poppins);
+}
+
+.close-icon {
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
+  align-self: flex-start;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  transition: opacity 300ms ease-in;
+  opacity: 1;
+}
+
+.close-icon:hover {
+  opacity: 0.6;
+}
+
+.close-icon:before,
+.close-icon:after {
+  position: absolute;
+  left: 0.938rem;
+  content: " ";
+  height: 0.813rem;
+  width: 0.125rem;
+  background-color: var(--black);
+}
+
+.close-icon:before {
+  transform: rotate(45deg);
+}
+
+.close-icon:after {
+  transform: rotate(-45deg);
+}
+
+/*==== SECTION BACKGROUND ====================*/
+.section {
+  position: relative;
+  background-color: var(--section-background-color);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content__background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+}
+
+.content__background img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  height: 100%;
+}
+
+/*==== CUSTOM ALERTS =====================*/
+.content__alert {
+  overflow: hidden;
+  position: absolute;
+  padding: 1.25rem 2.5rem;
+  min-width: 26.25rem;
+  border-radius: 0.25rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content__alert.showAlert {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.content__alert.show {
+  animation: showAlert 1000ms ease forwards;
+  opacity: 1;
+}
+
+.content__alert.hide {
+  animation: hideAlert 1000ms ease forwards;
+}
+
+.content__alert .alert-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  font-size: 1.875rem;
+  transform: translateY(-50%);
+}
+
+.content__alert .content__alert--message {
+  padding: 0 1.25rem;
+  font-size: 1.125rem;
+}
+
+.content__alert .content__close-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1.25rem 1.125rem;
+  cursor: pointer;
+}
+
+.content__close-icon--alert .close-icon--alert {
+  font-size: 1.375rem;
+  line-height: 2.5rem;
+}
+
+/*======== BLUE ALERT ========*/
+#blue-alert {
+  border-left: 0.5rem solid var(--blue-border-left-color);
+  background-color: var(--blue-background-color);
+  right: 0;
+  top: 0.625rem;
+}
+
+#blue-alert .alert-icon,
+#blue-alert .content__alert--message,
+#blue-alert .close-icon--alert {
+  color: var(--blue-base-color);
+}
+
+#blue-alert .content__close-button {
+  background-color: var(--blue-close-button-color);
+}
+
+#blue-alert .content__close-button:hover {
+  background-color: var(--blue-close-button-color-hover);
+}
+
+/*======== RED ALERT ========*/
+#red-alert {
+  border-left: 0.5rem solid var(--red-border-left-color);
+  background-color: var(--red-background-color);
+  right: 0;
+  bottom: 0.625rem;
+}
+
+#red-alert .alert-icon,
+#red-alert .content__alert--message,
+#red-alert .close-icon--alert {
+  color: var(--red-base-color);
+}
+
+#red-alert .content__close-button {
+  background-color: var(--red-close-button-color);
+}
+
+#red-alert .content__close-button:hover {
+  background-color: var(--red-close-button-color-hover);
+}
+
+/*==== LAYOUT ====================*/
+.content__card {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+/*==== CARD ====================*/
+.content__card {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content__card--header {
+  position: relative;
+  z-index: 10;
+  border-radius: 1.3rem;
+  padding: 1rem 2.3rem;
+  background-color: var(--white);
+}
+
+.card__image--alura-logo img {
+  position: relative;
+  top: -0.563rem;
+  left: -1.563rem;
+  width: 2.3rem;
+  transition: transform 300ms ease-in;
+}
+
+.card__image--alura-logo img:hover {
+  transform: scale(1.1);
+}
+
+.card__image--imersao img {
+  width: 10rem;
+  margin-bottom: 0.5rem;
+}
+
+.content__card--header .card__text .title--h1 {
+  font: var(--bold-font) var(--title-h1-font-size) var(--poppins);
+  color: var(--black);
+  text-align: center;
+}
+
+.content__attempts {
+  position: relative;
+}
+
+.circle {
+  position: absolute;
+  right: 4.48rem;
+  bottom: -1.7rem;
+  border: 1px solid var(--black);
+  border-radius: 50%;
+  background-color: var(--white);
+  width: 1.41rem;
+  height: 1.41rem;
+  display: flex;
+  justify-content: center;
+}
+
+.content__attempts .attempts-number {
+  position: relative;
+  left: 0.47rem;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  background: none;
+  border: none;
+  font-family: var(--poppins);
+  font-weight: var(--bold-font);
+}
+
+.content__card--body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -1.08rem;
+  padding: 3.4rem 2rem 3rem;
+  width: 14.6rem;
+  background-color: var(--white);
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.card__form--box {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.14rem;
+  margin-bottom: 0.5rem;
+  transform: translateX(7px);
+}
+
+.card__form .card__input {
+  font-weight: var(--medium-font);
+  font-family: var(--poppins);
+  padding: 0.1rem 0;
+  text-align: center;
+  background: none;
+  line-height: 1;
+  border-radius: 0.3rem;
+  border: 1px solid var(--black);
+  color: var(--black);
+  outline: none;
+  width: 100%;
+}
+
+.card__input::-webkit-outer-spin-button,
+.card__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.card__input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.card__button--submit .button {
+  background-color: var(--white);
+  cursor: pointer;
+  border: 1px solid var(--black);
+  padding: 0.23rem;
+  border-radius: 0.3rem;
+  transition-property: background, color;
+  transition-duration: 400ms;
+  transition-timing-function: ease-in;
+}
+
+.card__button--submit .button:hover {
+  background-color: var(--black);
+}
+
+.card__button--submit:hover .arrow-icon {
+  color: var(--white);
+}
+
+.content__card--body .rules__button {
+  font: var(--medium-font) var(--rules-button-font-size) var(--poppins);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.content__card--body .rules__button:hover {
+  text-decoration: none;
+}
+
+/*==== CONGRATULATIONS POPUP ====================*/
+.content__congratulations {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  width: 17rem;
+  padding: 3.1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms ease-in;
+}
+
+.content__congratulations.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*==== FAILED POPUP ====================*/
+.content__failed {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  width: 17rem;
+  padding: 3.1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 400ms ease-in;
+}
+
+.content__failed.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.content__failed .title--h2 {
+  font-size: var(--title-h2-font-size-alt);
+}
+
+/*==== RULES POPUP ====================*/
+.content__rules {
+  position: absolute;
+  z-index: 100;
+  width: 17rem;
+  padding: 3.1rem 2rem 2.4rem;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+}
+
+.content__rules#rules-popup.toggle {
+  visibility: visible;
+  opacity: 1;
+}
+
+.content__rules .title--h3 {
+  font: var(--bold-font) var(--title-h3-font-size) var(--poppins);
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.rules__text {
+  display: grid;
+  row-gap: 0.8rem;
+}
+
+.rules__text .paragraph {
+  font-size: var(--paragraph-font-size);
+  line-height: 1.4;
+}
+
+.rules__text .rules--icon {
+  font-size: var(--normal-font-size);
+  margin-right: 0.15rem;
+  transform: translateY(5%);
+}
+
+.rules__text .title--h4 {
+  margin-top: 1rem;
+  text-align: center;
+  font-family: var(--poppins);
+  font-weight: var(--bold-font);
+}
