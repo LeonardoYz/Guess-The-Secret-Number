@@ -3,7 +3,6 @@
 <div align="center">
   <h3>My solution to the number guessing game challenge (Imersão Dev of <a href="https://www.alura.com.br/" target="_blank">Alura</a>)</h3>
 </div>
-<br>
 <div align="center">
   <h2>
     <a href="">
@@ -11,7 +10,6 @@
     </a>
   </h2>
 </div>
-<br>
 
 <div> 
   <h3>👀 Preview</h3>
