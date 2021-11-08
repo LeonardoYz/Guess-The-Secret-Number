@@ -5,7 +5,7 @@
 </div>
 <div align="center">
   <h2>
-    <a href="https://leonardoyz.github.io/Guess-The-Secret-Number/">
+    <a href="https://leonardoyz.github.io/Guess-The-Secret-Number/" target="_blank">
       Demo
     </a>
   </h2>
@@ -26,3 +26,7 @@
   <li>Flexbox</li>
   <li>Javascript</li>
 </ul>
+
+#
+<h3>🔗 Link for project on Codepen</h3>
+<h4><a href="https://codepen.io/LeonardoYz/pen/XWgxMYM">GameGuessTheNumber</a></h4>
